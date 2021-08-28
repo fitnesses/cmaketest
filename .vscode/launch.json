@@ -16,6 +16,7 @@
             "cwd": "${workspaceFolder}", //指定工作目录
             // "preLaunchTask": "build", //在调试前会先调用build_debug这个task编译构建程序
             "environment": [],
+            "internalConsoleOptions": "neverOpen",
             "externalConsole": false
         }
     ]
