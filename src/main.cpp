@@ -18,5 +18,11 @@ int main(int argc, char const* argv[]) {
 
     std::cout << add(23.0f, 24) << std::endl;
 
+#ifdef FOO_ENABLE
+    std::cout << FOO_STRING << std::endl;
+#else
+    std::cout << "error" << std::endl;
+#endif
+
     return 0;
 }

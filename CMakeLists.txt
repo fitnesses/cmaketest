@@ -5,8 +5,8 @@ project(hello VERSION 1.0.2)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE) 
-# SET(CMAKE_INSTALL_RPATH "\${ORIGIN}/../lib")
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE) 
+SET(CMAKE_INSTALL_RPATH "\${ORIGIN}/../lib")
 
 include(cmake/utils.cmake)
 
@@ -23,6 +23,11 @@ get_git_branch(GIT_BRANCH)
 message("Git branch is ${GIT_BRANCH}")
 
 
+option(FOO_ENABLE "Enable Foo" ON)
+if(FOO_ENABLE)
+  set(FOO_STRING "foo")
+endif()
+
 # 指定版本号的配置文件
 configure_file(config.h.in config.h)
 
@@ -38,8 +43,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}")
 
 add_subdirectory(src/adder)
 
-find_package(fmt REQUIRED)
+# find_package(fmt REQUIRED)
+
+link_directories(lib)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    fmt::fmt adder
+    fmt adder
 )

@@ -1,4 +1,7 @@
 
+#cmakedefine FOO_ENABLE
+#cmakedefine FOO_STRING "@FOO_STRING@"
+
 // clang-format off
 
 #define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
